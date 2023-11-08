@@ -18,8 +18,8 @@ def main_app():
     st.plotly_chart(fig_asistencia, use_container_width=True)
 
     data_to_plot = { 
-        'Categoria' : ['Total 2022', 'Visitantes que regresaron 2022-2023', 'No Regresaron en 2023'],
-        'Asistentes' : [2718, 32, 2686]
+        'Categoria' : ['Asistentes 2022', 'Visitantes que regresaron 2023', 'Nuevos Visitantes en 2023'],
+        'Asistentes' : [718, 32, 1241]
     }
 
     plot_df = pd.DataFrame(data_to_plot)
