@@ -40,7 +40,10 @@ def create_pie_charts(name1, name2):
     # Create a pie chart for each unique date
     for date in unique_dates:
         df_filtered = table[table['FechaEvento'] == date]
-        fig = px.pie(df_filtered, values='Cantidad', names='Empresa', title=f'Empresa Distribucion para {date}')
+        df_filtered = df_filtered.copy()
+        map_NAN = {'NAN' : 'OTROS'}
+        df_filtered['Empresa'] = df_filtered['Empresa'].replace(map_NAN)
+        fig = px.pie(df_filtered, values='Cantidad', names='Empresa', title=f'Distribucion por Categoria {date}')
         figs.append(fig)
     
     return figs
