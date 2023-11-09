@@ -42,7 +42,7 @@ def create_pie_charts(name1, name2):
         df_f = table[table['FechaEvento'] == date]
         df_f = df_f.copy()
         map_NAN = {'NAN' : 'OTROS'}
-        df_filtered['Empresa'] = df_f['Empresa'].replace(map_NAN)
+        df_f['Empresa'] = df_f['Empresa'].replace(map_NAN)
         fig = px.pie(df_f, values='Cantidad', names='Empresa', title=f'Distribucion por Categoria {date}')
         figs.append(fig)
     
