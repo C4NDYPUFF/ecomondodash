@@ -15,7 +15,7 @@ df_filtered = df_filtered[df_filtered['Categoria'].isin(categoria_list)]
 
 def create_histogram(x, y, axis_x_title, axis_y_title, title):
 
-    fig = px.histogram(df_filtered, x=x, color=y)
+    fig = px.histogram(df_filtered, x=x, color=y, barmode='group')
 
     fig.update_layout(
         xaxis_title= axis_x_title,
