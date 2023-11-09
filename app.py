@@ -30,7 +30,7 @@ def main_app():
     }
 
     plot_df = pd.DataFrame(data_to_plot)
-    fig= px.bar(plot_df, x='Categoria', y='Asistentes', title='Resumen de Asistentes ECCOMONDO')
+    fig= px.bar(plot_df, x='Categoria', y='Asistentes', title='Resumen de Asistentes ECOMONDO')
 
     st.plotly_chart(fig, use_container_width=True)
 
