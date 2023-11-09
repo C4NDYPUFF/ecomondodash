@@ -10,8 +10,8 @@ df = load_data(st.secrets['CSV_FILE_PATH'], st.secrets['EXCEL_FILE_PATH'])
 ###CATEGORIAS POR EVENTO ### 
 df_filtered = df[df['Asistencia']=='SI']
 df_filtered = df.dropna(subset=['Categoria', 'FechaEvento'])
-categoria_list = ['EXPOSITOR ECOMONDO', 'ESTUDIANTE ECOMONDO', 'VISITANTE ECOMONDO']
-df_filtered = df_filtered[df_filtered['Categoria'].isin(categoria_list)]
+#categoria_list = ['EXPOSITOR ECOMONDO', 'ESTUDIANTE ECOMONDO', 'VISITANTE ECOMONDO']
+#df_filtered = df_filtered[df_filtered['Categoria'].isin(categoria_list)]
 
 def create_histogram(x, y, axis_x_title, axis_y_title, title):
 
