@@ -9,8 +9,15 @@ def main_app():
     st.title(':bar_chart: ECOMONDO VISITANTES 2022 y 2023')
     st.markdown('##')
 
-    fig_categoria = create_histogram(x='Categoria', y='FechaEvento', axis_x_title='Categoria', axis_y_title='Registros', title='Registros por Categoria')
+    data_total = { 
+        'Evento' : ['ECOMONDO 2022', 'ECOMONDO 2023'],
+        'Registros' : [1848, 4668]
+    }
 
+    plot_total = pd.DataFrame(data_total)
+    fig_total = px.bar(plot_total, x='Evento', y='Registros', color='Evento', title='Total Registros para cada Evento')
+    st.plotly_chart(fig_total, use_container_width=True)
+    fig_categoria = create_histogram(x='Categoria', y='FechaEvento', axis_x_title='Categoria', axis_y_title='Registros', title='Registros por Categoria')
     st.plotly_chart(fig_categoria, use_container_width=True)
 
     fig_asistencia = create_histogram(x='Asistencia', y='FechaEvento', axis_x_title='Asitencia', axis_y_title='Registros', title='Asistentes por evento de ECOMONDO 2022 y 2023')
