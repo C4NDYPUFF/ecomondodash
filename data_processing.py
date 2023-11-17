@@ -30,3 +30,15 @@ def load_data(file_path_csv, file_path_excel):
 
 
 
+def map_medio(medio):
+    if pd.isna(medio):
+        return 'INFORMACION NO DISPONIBLE'
+    medio_str = str(medio).upper()
+    redes = ['FACEBOOK', 'INSTAGRAM', 'LINKEDIN', 'TWITTER', 'TIKTOK']
+    for name in redes:
+        if medio_str == name:
+            return 'REDES SOCIALES'
+    if medio_str == 'INVITADO POR EXPOSITOR':
+        return 'INVITADO POR EXPOSITOR'
+    else:
+        return 'OTROS'

@@ -1,10 +1,9 @@
 import streamlit as st 
 import plotly_express as px 
-from data_processing import load_data
+from data_processing import load_data, map_medio
 
 df = load_data(st.secrets['CSV_FILE_PATH'], st.secrets['EXCEL_FILE_PATH'])
-
-
+df['ComoSeEntero'] = df['ComoSeEntero'].apply(map_medio)
 
 
 ###CATEGORIAS POR EVENTO ### 
@@ -43,7 +42,16 @@ def create_pie_charts(name1, name2):
         df_f = df_f.copy()
         map_NAN = {'NAN' : 'OTROS'}
         df_f['Empresa'] = df_f['Empresa'].replace(map_NAN)
-        fig = px.pie(df_f, values='Cantidad', names='Empresa', title=f'Distribucion por Categoria {date}')
+        fig = px.pie(df_f, values='Cantidad', names='Empresa', title=f'Distribución por Categoria {date}')
         figs.append(fig)
     
     return figs
+
+def plot_pie_chart(evento):
+    df['FechaEvento'] = df['FechaEvento'].astype(str)
+    table = df.groupby(['ComoSeEntero', 'FechaEvento', 'Asistencia']).size().reset_index(name='Cantidad')
+    #table = table[table['Asistencia'].str.contains('SI')]
+    table_evento = table[table['FechaEvento'].str.contains(evento)]
+    pie_data = table_evento.groupby('ComoSeEntero')['Cantidad'].sum().reset_index()
+    fig = px.pie(pie_data, values='Cantidad', names='ComoSeEntero', title=f'Distribución de Registros por medios en {evento}')
+    return fig

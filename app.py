@@ -1,5 +1,5 @@
 import streamlit as st 
-from ploting import create_histogram, create_pie_charts
+from ploting import create_histogram, create_pie_charts, plot_pie_chart
 import pandas as pd 
 import plotly_express as px
 
@@ -38,5 +38,8 @@ def main_app():
 
     for pie in pie_chart:
         st.plotly_chart(pie, use_container_width=True)
+    
+    fig_medio_2022 = plot_pie_chart('2023')
+    st.plotly_chart(fig_medio_2022, use_container_width=True)
 
 main_app()
