@@ -41,4 +41,4 @@ def map_medio(medio):
     if medio_str == 'INVITADO POR EXPOSITOR':
         return 'INVITADO POR EXPOSITOR'
     else:
-        return 'OTROS'
+        return medio_str
