@@ -17,7 +17,7 @@ def main_app():
     plot_total = pd.DataFrame(data_total)
     fig_total = px.bar(plot_total, x='Evento', y='Registros', color='Evento', title='Total Registros para cada Evento')
     st.plotly_chart(fig_total, use_container_width=True)
-    fig_categoria = create_histogram(x='Categoria', y='FechaEvento', axis_x_title='Categoria', axis_y_title='Registros', title='Registros por Categoria')
+    fig_categoria = create_histogram(x='Categoria', y='FechaEvento', axis_x_title='Categoria', axis_y_title='Registros', title='Registros por tipo de visitante')
     st.plotly_chart(fig_categoria, use_container_width=True)
 
     fig_asistencia = create_histogram(x='Asistencia', y='FechaEvento', axis_x_title='Asitencia', axis_y_title='Registros', title='Asistentes por evento de ECOMONDO 2022 y 2023')
